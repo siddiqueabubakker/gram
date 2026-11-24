@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gramin Bandhu Rideshare | গ্রামীণ বন্ধু রাইডশেয়ার</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f8f3;--sf:#fff;--tx:#14261b;--mu:#5a6b60;--gr:#1d6b3b;--dk:#0d3a24;--gold:#f2a900;--ln:#d9e2d9;--sky:#dff1f3;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1a13;--sf:#162419;--tx:#e8f1ea;--mu:#9fb2a5;--gr:#4fbf7a;--dk:#07150d;--ln:#27402f;--sky:#12303a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e1a13;--sf:#162419;--tx:#e8f1ea;--mu:#9fb2a5;--gr:#4fbf7a;--dk:#07150d;--ln:#27402f;--sky:#12303a;color-scheme:dark}
+html{scroll-padding-top:70px}
+*,*:before,*:after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:400 16px/1.6 "Hind Siliguri",system-ui,sans-serif}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--dk);color:#fff;display:flex;align-items:center;gap:14px;padding:8px 16px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;font-size:18px;line-height:1.1}
+.logo small{display:block;font-weight:400;font-size:11px;opacity:.8}
+nav{display:flex;gap:4px;flex:1;flex-wrap:wrap}
+nav a{text-decoration:none;padding:6px 12px;border-radius:8px;font-size:15px}
+nav a:hover{background:rgba(255,255,255,.12)}
+.btn{font:inherit;font-weight:600;border:0;border-radius:10px;padding:9px 18px;cursor:pointer;background:var(--gold);color:#241a00}
+.btn.ghost{background:transparent;color:inherit;border:1.5px solid currentColor}
+.btn.gr{background:var(--gr);color:#fff}
+header .btn{padding:6px 14px}
+.hero{background:linear-gradient(180deg,var(--dk) 0,#145230 70%,var(--gr) 100%);color:#fff;padding:36px 16px 60px;overflow:hidden}
+.wrap{max-width:1100px;margin:0 auto}
+.hero h1{font-size:clamp(30px,6vw,56px);line-height:1.15;margin:0 0 8px;max-width:14em}
+.hero p{max-width:34em;margin:0 0 18px;opacity:.9;font-size:18px}
+.reg{display:inline-block;border:1.5px dashed var(--gold);color:var(--gold);border-radius:8px;padding:4px 12px;font-size:14px;margin-bottom:16px}
+.stage{perspective:1000px;height:300px;margin:10px auto 0;position:relative;max-width:620px}
+.ring{position:absolute;left:50%;top:50%;width:200px;height:240px;margin:-120px 0 0 -100px;transform-style:preserve-3d;transition:transform 1s cubic-bezier(.4,.1,.2,1)}
+.card3{position:absolute;inset:0;background:var(--sf);color:var(--tx);border-radius:16px;padding:14px;text-align:center;backface-visibility:hidden;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.card3 svg{width:100%;height:120px}
+.card3 b{display:block;font-size:19px}
+.card3 span{color:var(--mu);font-size:14px}
+.ctrl{display:flex;justify-content:center;gap:10px;margin-top:6px}
+.ctrl button{width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.18);color:#fff;font-size:20px;cursor:pointer}
+section{padding:44px 16px}
+h2{font-size:30px;margin:0 0 6px}
+.sub{color:var(--mu);margin:0 0 22px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.panel{background:var(--sf);border:1px solid var(--ln);border-radius:14px;padding:20px}
+label{display:block;font-weight:600;font-size:14px;margin:12px 0 4px}
+input,select{width:100%;font:inherit;padding:10px 12px;border:1.5px solid var(--ln);border-radius:10px;background:var(--bg);color:var(--tx)}
+.row{display:flex;gap:8px}.row>*{flex:1}.row .btn{flex:none}
+.fare{background:var(--sky);border-radius:12px;padding:14px;margin-top:14px}
+.fare .big{font-size:34px;font-weight:700;color:var(--gr)}
+.badge{display:inline-block;border-radius:20px;padding:2px 10px;font-size:13px;background:var(--gold);color:#241a00;font-weight:600}
+.track{font-size:14px;color:var(--mu);margin-top:8px;word-break:break-word}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:#bbb;margin-right:6px}.dot.on{background:#2ecc71;animation:p 1.4s infinite}
+@keyframes p{50%{opacity:.35}}
+.filters{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:18px}
+.ride{display:flex;justify-content:space-between;gap:10px;align-items:center;border:1px solid var(--ln);background:var(--sf);border-radius:12px;padding:12px 16px;margin-bottom:10px;flex-wrap:wrap}
+.empty{text-align:center;color:var(--mu);padding:28px;border:1.5px dashed var(--ln);border-radius:12px}
+.tg{display:flex;gap:8px;align-items:center;margin-top:10px;font-size:14px}.tg input{width:auto}
+ul.safe{padding-left:20px;margin:0}
+footer{background:var(--dk);color:#d5e6da;padding:30px 16px;font-size:15px}
+footer .grid{gap:16px}
+footer a{display:block;text-decoration:none;padding:2px 0}
+dialog{border:0;border-radius:16px;padding:24px;max-width:380px;width:92%;background:var(--sf);color:var(--tx)}
+dialog::backdrop{background:rgba(0,0,0,.55)}
+.msg{font-size:14px;color:var(--mu);margin-top:8px}
+.tools{display:flex;gap:6px;margin-left:auto}
+@media (prefers-reduced-motion:reduce){.ring{transition:none}.dot.on{animation:none}}
+</style>
+</head>
+<body>
+<header>
+  <a class="logo" href="#home" aria-label="Gramin Bandhu">
+    <svg width="42" height="42" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="23" fill="#f2a900"/><path d="M8 33c6-2 10-8 16-8s10 6 16 8" stroke="#0d3a24" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M24 9c-5 0-8 4-8 8 0 6 8 12 8 12s8-6 8-12c0-4-3-8-8-8z" fill="#0d3a24"/><circle cx="24" cy="17" r="3.2" fill="#f2a900"/></svg>
+    <span><span data-t="নাম|Gramin Bandhu">গ্রামীণ বন্ধু</span><small data-t="রাইডশেয়ার|Rideshare">রাইডশেয়ার</small></span>
+  </a>
+  <nav>
+    <a href="#home" data-t="হোম|Home">হোম</a>
+    <a href="#book" data-t="রাইড বুক|Book a ride">রাইড বুক</a>
+    <a href="#browse" data-t="রাইড খুঁজুন|Browse rides">রাইড খুঁজুন</a>
+    <a href="#safety" data-t="নিরাপত্তা|Safety">নিরাপত্তা</a>
+    <a href="#contact" data-t="যোগাযোগ|Contact">যোগাযোগ</a>
+  </nav>
+  <div class="tools">
+    <button class="btn ghost" id="lang" aria-label="Language">English</button>
+    <button class="btn" id="auth" data-t="সাইন ইন|Sign in">সাইন ইন</button>
+  </div>
+</header>
+
+<main id="home">
+<div class="hero">
+  <div class="wrap">
+    <span class="reg" data-t="নিবন্ধিত রেজিস্ট্রেশন আইডি: [আপনার আইডি এখানে বসান]|Registered ID: [insert your registration ID]">নিবন্ধিত রেজিস্ট্রেশন আইডি: [আপনার আইডি এখানে বসান]</span>
+    <h1 data-t="আপনার গ্রামের পথে, আপনার বন্ধু|Your friend on every village road">আপনার গ্রামের পথে, আপনার বন্ধু</h1>
+    <p data-t="ভ্যানগাড়ি, অটোরিকশা, সাইকেল, বাইক ও কার। আরামদায়ক, নিরাপদ ও সাশ্রয়ী যাত্রা।|Van gari, auto-rickshaw, bicycle, bike and car. Comfortable, safe and affordable journeys.">ভ্যানগাড়ি, অটোরিকশা, সাইকেল, বাইক ও কার। আরামদায়ক, নিরাপদ ও সাশ্রয়ী যাত্রা।</p>
+    <a class="btn" href="#book" data-t="এখনই রাইড বুক করুন|Book a ride now">এখনই রাইড বুক করুন</a>
+    <div class="stage"><div class="ring" id="ring"></div></div>
+    <div class="ctrl"><button id="prev" aria-label="Previous">‹</button><button id="next" aria-label="Next">›</button></div>
+  </div>
+</div>
+
+<section id="book"><div class="wrap">
+  <h2 data-t="রাইড বুক করুন|Book a ride">রাইড বুক করুন</h2>
+  <p class="sub" data-t="পিকআপ বা ড্রপ লোকেশন দিন, দূরত্ব অনুযায়ী ভাড়া দেখুন।|Set pickup or drop, then see the fare by distance.">পিকআপ বা ড্রপ লোকেশন দিন, দূরত্ব অনুযায়ী ভাড়া দেখুন।</p>
+  <div class="grid">
+    <div class="panel">
+      <label data-t="সার্চ|Search">সার্চ</label>
+      <input id="q" type="search" placeholder="" data-p="গন্তব্য খুঁজুন (যেমন: ফরিদপুর)|Search destination (e.g. Faridpur)">
+      <label data-t="পিকআপ লোকেশন|Pickup location">পিকআপ লোকেশন</label>
+      <div class="row"><input id="pick" data-p="আপনার অবস্থান|Your location"><button class="btn gr" id="loc" data-t="আমার অবস্থান|My location">আমার অবস্থান</button></div>
+      <label data-t="ড্রপ লোকেশন|Drop location">ড্রপ লোকেশন</label>
+      <input id="drop" data-p="গন্তব্য|Destination">
+      <label data-t="বাহন|Vehicle">বাহন</label>
+      <select id="veh"></select>
+      <label><span data-t="দূরত্ব|Distance">দূরত্ব</span>: <b id="dv">5</b> km</label>
+      <input id="dist" type="range" min="1" max="40" value="5">
+      <label class="tg"><input type="checkbox" id="nightAuto" checked> <span data-t="সময় অনুযায়ী দিন/রাত ভাড়া|Day/night fare by clock time">সময় অনুযায়ী দিন/রাত ভাড়া</span></label>
+      <select id="period" hidden><option value="d">Day</option><option value="n">Night</option></select>
+    </div>
+    <div class="panel">
+      <div class="badge" id="pb"></div>
+      <div class="fare">
+        <div data-t="আনুমানিক ভাড়া|Estimated fare">আনুমানিক ভাড়া</div>
+        <div class="big" id="fare">৳0</div>
+        <div id="meta" class="track"></div>
+      </div>
+      <p class="msg" data-t="রাত ১০টা থেকে ভোর ৬টা পর্যন্ত রাতের ভাড়া। ভাড়ার হার নমুনা, আপনার হার দিয়ে বদলে নিন।|Night rate applies 10 pm to 6 am. Rates are samples; replace them with your own.">রাত ১০টা থেকে ভোর ৬টা পর্যন্ত রাতের ভাড়া। ভাড়ার হার নমুনা, আপনার হার দিয়ে বদলে নিন।</p>
+      <button class="btn gr" id="confirm" data-t="রাইড নিশ্চিত করুন|Confirm ride">রাইড নিশ্চিত করুন</button>
+      <hr style="border:0;border-top:1px solid var(--ln);margin:16px 0">
+      <b data-t="লোকেশন ট্র্যাকিং|Location tracking">লোকেশন ট্র্যাকিং</b>
+      <div class="track"><span class="dot" id="dot"></span><span id="trk"></span></div>
+      <button class="btn ghost" id="trkBtn" style="color:var(--gr);margin-top:8px" data-t="ট্র্যাকিং চালু|Start tracking">ট্র্যাকিং চালু</button>
+    </div>
+  </div>
+</div></section>
+
+<section id="browse" style="background:var(--sf)"><div class="wrap">
+  <h2 data-t="রাইড খুঁজুন|Browse rides">রাইড খুঁজুন</h2>
+  <p class="sub" data-t="নিজে ফিল্টার করে আপনার মতো রাইড বেছে নিন। স্বয়ংক্রিয় ম্যাচিং নেই।|Filter and pick the ride that fits. There is no automatic matching.">নিজে ফিল্টার করে আপনার মতো রাইড বেছে নিন। স্বয়ংক্রিয় ম্যাচিং নেই।</p>
+  <div class="filters">
+    <select id="fType"><option value="" data-t="ধরন|Type">ধরন</option><option value="offer">Offer</option><option value="request">Request</option></select>
+    <select id="fDiv"><option value="" data-t="বিভাগ|Division">বিভাগ</option><option>Dhaka</option><option>Khulna</option><option>Rajshahi</option></select>
+    <input id="fCity" data-p="শহর|City">
+    <input id="fFrom" data-p="কোথা থেকে|From">
+    <input id="fTo" data-p="কোথায়|To">
+    <select id="fFreq"><option value="" data-t="ফ্রিকোয়েন্সি|Frequency">ফ্রিকোয়েন্সি</option><option>Daily</option><option>Weekly</option><option>One-time</option></select>
+    <button class="btn ghost" id="reset" style="color:var(--gr)" data-t="ফিল্টার রিসেট|Reset filters">ফিল্টার রিসেট</button>
+  </div>
+  <div id="rides"></div>
+</div></section>
+
+<section id="safety"><div class="wrap grid">
+  <div class="panel"><h2 style="font-size:24px" data-t="নিরাপত্তা নির্দেশিকা|Safety guidelines">নিরাপত্তা নির্দেশিকা</h2>
+    <ul class="safe">
+      <li data-t="রাইডে ওঠার আগে চালকের নাম ও নিবন্ধিত আইডি মিলিয়ে নিন।|Check the driver’s name and registered ID before you ride.">রাইডে ওঠার আগে চালকের নাম ও নিবন্ধিত আইডি মিলিয়ে নিন।</li>
+      <li data-t="পরিচিত কাউকে আপনার ট্রিপের তথ্য জানান।|Share your trip details with someone you know.">পরিচিত কাউকে আপনার ট্রিপের তথ্য জানান।</li>
+      <li data-t="রাতে ব্যস্ত ও আলো আছে এমন জায়গায় পিকআপ নিন।|At night, pick up from a busy, well-lit place.">রাতে ব্যস্ত ও আলো আছে এমন জায়গায় পিকআপ নিন।</li>
+      <li data-t="ভাড়া আগে ঠিক করুন এবং অ্যাপের ভাড়ার সঙ্গে মেলান।|Agree the fare first and match it with the app estimate.">ভাড়া আগে ঠিক করুন এবং অ্যাপের ভাড়ার সঙ্গে মেলান।</li>
+    </ul></div>
+  <div class="panel"><h2 style="font-size:24px" data-t="দাবিত্যাগ|Disclaimer">দাবিত্যাগ</h2>
+    <p data-t="দেখানো ভাড়া আনুমানিক এবং দূরত্ব, সময় ও চাহিদা অনুযায়ী বদলাতে পারে। রাইড শেয়ারে যাত্রীরা নিজ দায়িত্বে যাত্রা করেন।|Fares shown are estimates and can change with distance, time and demand. Riders travel at their own responsibility.">দেখানো ভাড়া আনুমানিক এবং দূরত্ব, সময় ও চাহিদা অনুযায়ী বদলাতে পারে। রাইড শেয়ারে যাত্রীরা নিজ দায়িত্বে যাত্রা করেন।</p></div>
+</div></section>
+</main>
+
+<footer id="contact"><div class="wrap grid">
+  <div><b style="font-size:18px" data-t="গ্রামীণ বন্ধু রাইডশেয়ার|Gramin Bandhu Rideshare">গ্রামীণ বন্ধু রাইডশেয়ার</b><p data-t="বাংলাদেশের জন্য তৈরি। জ্বালানি ভাগ করুন, খরচ বাঁচান, নিরাপদে চলুন।|Built for Bangladesh. Split fuel, save money, travel safer.">বাংলাদেশের জন্য তৈরি। জ্বালানি ভাগ করুন, খরচ বাঁচান, নিরাপদে চলুন।</p></div>
+  <div><b data-t="দ্রুত লিংক|Quick links">দ্রুত লিংক</b><a href="#browse" data-t="রাইড খুঁজুন|Browse rides">রাইড খুঁজুন</a><a href="#safety" data-t="নিরাপত্তা নির্দেশিকা|Safety guidelines">নিরাপত্তা নির্দেশিকা</a><a href="#safety" data-t="দাবিত্যাগ|Disclaimer">দাবিত্যাগ</a><a href="#" id="install" data-t="অ্যাপ ইনস্টল|Install app">অ্যাপ ইনস্টল</a></div>
+  <div><b data-t="যোগাযোগ|Contact">যোগাযোগ</b><a href="tel:01924376445">01924376445</a><span data-t="গোপালপুর বাজার, আলফাডাঙ্গা, কামারগ্রাম, ফরিদপুর|Gopalpur Bazar, Alfadanga, Kamargram, Faridpur">গোপালপুর বাজার, আলফাডাঙ্গা, কামারগ্রাম, ফরিদপুর</span></div>
+</div></footer>
+
+<dialog id="dlg">
+  <h2 style="font-size:24px" data-t="সাইন ইন|Sign in">সাইন ইন</h2>
+  <div id="s1"><label data-t="ফোন নম্বর|Phone number">ফোন নম্বর</label><input id="ph" type="tel" inputmode="numeric" placeholder="01XXXXXXXXX"><button class="btn gr" id="sendOtp" style="margin-top:12px;width:100%" data-t="ওটিপি পাঠান|Send OTP">ওটিপি পাঠান</button></div>
+  <div id="s2" hidden><label data-t="৬ সংখ্যার ওটিপি|6-digit OTP">৬ সংখ্যার ওটিপি</label><input id="otp" inputmode="numeric" maxlength="6"><button class="btn gr" id="verify" style="margin-top:12px;width:100%" data-t="যাচাই করুন|Verify">যাচাই করুন</button></div>
+  <p class="msg" id="dm" role="status"></p>
+  <button class="btn ghost" id="close" style="color:var(--tx);margin-top:8px" data-t="বন্ধ করুন|Close">বন্ধ করুন</button>
+</dialog>
+
+<script>
+var L='bn',user=null,otpCode='',deferred=null;
+var V=[{k:'bi',n:['সাইকেল','Bicycle'],b:15,r:8},{k:'van',n:['ভ্যানগাড়ি','Van gari'],b:20,r:10},{k:'auto',n:['অটোরিকশা','Auto-rickshaw'],b:30,r:14},{k:'bike',n:['বাইক','Bike'],b:30,r:12},{k:'car',n:['কার','Car'],b:60,r:22}];
+var P={
+bi:'<circle cx="25" cy="85" r="22" fill="none" stroke="#1d6b3b" stroke-width="5"/><circle cx="115" cy="85" r="22" fill="none" stroke="#1d6b3b" stroke-width="5"/><path d="M25 85L55 50h35l25 35M55 50l20 35h40M85 50l-10-12h-12" fill="none" stroke="#0d3a24" stroke-width="5" stroke-linecap="round"/>',
+van:'<rect x="20" y="55" width="100" height="14" rx="3" fill="#f2a900"/><path d="M30 55V30h60v25" fill="none" stroke="#0d3a24" stroke-width="4"/><circle cx="40" cy="85" r="16" fill="none" stroke="#1d6b3b" stroke-width="5"/><circle cx="100" cy="85" r="16" fill="none" stroke="#1d6b3b" stroke-width="5"/><path d="M120 62l12 -10v-12" stroke="#0d3a24" stroke-width="4" fill="none"/>',
+auto:'<path d="M20 80V45q0-18 25-22h40q20 4 28 30l8 27z" fill="#1d6b3b"/><rect x="35" y="35" width="45" height="22" rx="4" fill="#dff1f3"/><circle cx="40" cy="88" r="13" fill="#0d3a24"/><circle cx="108" cy="88" r="13" fill="#0d3a24"/><circle cx="108" cy="88" r="5" fill="#f2a900"/>',
+bike:'<circle cx="28" cy="85" r="19" fill="none" stroke="#0d3a24" stroke-width="6"/><circle cx="115" cy="85" r="19" fill="none" stroke="#0d3a24" stroke-width="6"/><path d="M28 85l30-30h30l27 30M58 55l10 20h30M80 40l12 15h12" fill="none" stroke="#1d6b3b" stroke-width="7" stroke-linecap="round"/><rect x="55" y="42" width="30" height="10" rx="4" fill="#f2a900"/>',
+car:'<path d="M12 78q0-12 14-14l16-22q4-5 14-5h32q10 0 15 6l15 21q14 2 14 14v6H12z" fill="#1d6b3b"/><path d="M48 46h26v18H40zM80 46h20l12 18H80z" fill="#dff1f3"/><circle cx="42" cy="86" r="14" fill="#0d3a24"/><circle cx="112" cy="86" r="14" fill="#0d3a24"/><circle cx="42" cy="86" r="5" fill="#f2a900"/><circle cx="112" cy="86" r="5" fill="#f2a900"/>'};
+var rides=[
+{t:'Offer',d:'Khulna',c:'Jashore',f:'Jashore',to:'Khulna',q:'Daily',p:'৳120'},
+{t:'Request',d:'Dhaka',c:'Faridpur',f:'Faridpur',to:'Dhaka',q:'Weekly',p:'৳250'},
+{t:'Offer',d:'Dhaka',c:'Faridpur',f:'Alfadanga',to:'Faridpur',q:'Daily',p:'৳60'}];
+var $=function(i){return document.getElementById(i)};
+function bn(n){return String(n).replace(/\d/g,function(d){return '০১২৩৪৫৬৭৮৯'[d]})}
+function num(n){return L==='bn'?bn(n):String(n)}
+function applyLang(){
+  document.documentElement.lang=L;
+  document.querySelectorAll('[data-t]').forEach(function(e){var p=e.dataset.t.split('|');e.textContent=p[L==='bn'?0:1]});
+  document.querySelectorAll('[data-p]').forEach(function(e){var p=e.dataset.p.split('|');e.placeholder=p[L==='bn'?0:1]});
+  $('lang').textContent=L==='bn'?'English':'বাংলা';
+  $('auth').textContent=user?(L==='bn'?'সাইন আউট':'Sign out'):(L==='bn'?'সাইন ইন':'Sign in');
+  var s=$('veh'),cur=s.value||'auto';s.innerHTML='';
+  V.forEach(function(v){var o=document.createElement('option');o.value=v.k;o.textContent=v.n[L==='bn'?0:1];s.appendChild(o)});s.value=cur;
+  buildRing();calc();showRides();trkText();
+}
+var ang=0,ringEl=$('ring'),timer;
+function buildRing(){
+  ringEl.innerHTML='';
+  V.forEach(function(v,i){
+    var c=document.createElement('div');c.className='card3';
+    c.style.transform='rotateY('+(i*72)+'deg) translateZ(250px)';
+    c.innerHTML='<svg viewBox="0 0 140 110" aria-hidden="true">'+P[v.k]+'</svg><b>'+v.n[L==='bn'?0:1]+'</b><span>৳'+num(v.r)+'/km</span>';
+    ringEl.appendChild(c);
+  });
+  spin(0);
+}
+function spin(d){ang+=d;ringEl.style.transform='rotateY('+(-ang*72)+'deg)'}
+function auto(){clearInterval(timer);if(!matchMedia('(prefers-reduced-motion:reduce)').matches)timer=setInterval(function(){spin(1)},3200)}
+$('next').onclick=function(){spin(1);auto()};$('prev').onclick=function(){spin(-1);auto()};
+function isNight(){if(!$('nightAuto').checked)return $('period').value==='n';var h=new Date().getHours();return h>=22||h<6}
+function calc(){
+  var v=V.find(function(x){return x.k===$('veh').value})||V[2],d=+$('dist').value,n=isNight();
+  var f=Math.round((v.b+v.r*d)*(n?1.3:1));
+  $('dv').textContent=num(d);
+  $('fare').textContent='৳'+num(f);
+  $('pb').textContent=n?(L==='bn'?'রাতের ভাড়া (+৩০%)':'Night fare (+30%)'):(L==='bn'?'দিনের ভাড়া':'Day fare');
+  $('meta').textContent=num(d)+' km = '+num((d*0.621371).toFixed(1))+' mile';
+}
+['veh','dist','nightAuto','period'].forEach(function(i){$(i).addEventListener('input',calc)});
+$('nightAuto').addEventListener('change',function(){$('period').hidden=this.checked});
+function showRides(){
+  var f={t:$('fType').value,d:$('fDiv').value,c:$('fCity').value.toLowerCase(),f:$('fFrom').value.toLowerCase(),to:$('fTo').value.toLowerCase(),q:$('fFreq').value};
+  var r=rides.filter(function(x){return(!f.t||x.t===f.t)&&(!f.d||x.d===f.d)&&(!f.q||x.q===f.q)&&x.c.toLowerCase().includes(f.c)&&x.f.toLowerCase().includes(f.f)&&x.to.toLowerCase().includes(f.to)});
+  $('rides').innerHTML=r.length?r.map(function(x){return '<div class="ride"><span><b>'+x.f+' → '+x.to+'</b><br><small>'+x.t+' · '+x.q+' · '+x.c+'</small></span><span class="badge">'+x.p+'</span></div>'}).join(''):
+  '<div class="empty"><b>'+(L==='bn'?'কোনো রাইড মেলেনি':'No listings match your filters')+'</b><br>'+(L==='bn'?'ফিল্টার বদলান অথবা কিছুক্ষণ পরে আবার দেখুন।':'Try broader filters or check back soon.')+'</div>';
+}
+['fType','fDiv','fCity','fFrom','fTo','fFreq'].forEach(function(i){$(i).addEventListener('input',showRides)});
+$('reset').onclick=function(){['fType','fDiv','fCity','fFrom','fTo','fFreq'].forEach(function(i){$(i).value=''});showRides()};
+/* location */
+var watch=null,lastPos=null;
+function trkText(){
+  var t=$('trk');
+  if(!lastPos){t.textContent=watch?(L==='bn'?'অবস্থান খোঁজা হচ্ছে…':'Locating…'):(L==='bn'?'ট্র্যাকিং বন্ধ':'Tracking is off');return}
+  t.textContent=lastPos.lat.toFixed(5)+', '+lastPos.lng.toFixed(5)+' (±'+Math.round(lastPos.acc)+' m)';
+}
+function got(p){lastPos={lat:p.coords.latitude,lng:p.coords.longitude,acc:p.coords.accuracy};$('pick').value=lastPos.lat.toFixed(5)+', '+lastPos.lng.toFixed(5);trkText()}
+function geoErr(){$('trk').textContent=L==='bn'?'অবস্থান পাওয়া যায়নি। ব্রাউজারে লোকেশন অনুমতি দিন।':'Location unavailable. Allow location access in your browser.';$('dot').classList.remove('on')}
+$('loc').onclick=function(){if(!navigator.geolocation)return geoErr();navigator.geolocation.getCurrentPosition(got,geoErr,{enableHighAccuracy:true,timeout:10000})};
+$('trkBtn').onclick=function(){
+  if(watch!==null){navigator.geolocation.clearWatch(watch);watch=null;$('dot').classList.remove('on');$('trkBtn').textContent=L==='bn'?'ট্র্যাকিং চালু':'Start tracking';trkText();return}
+  if(!navigator.geolocation)return geoErr();
+  watch=navigator.geolocation.watchPosition(got,geoErr,{enableHighAccuracy:true});$('dot').classList.add('on');$('trkBtn').textContent=L==='bn'?'ট্র্যাকিং বন্ধ':'Stop tracking';trkText();
+};
+/* auth (demo) */
+var dlg=$('dlg');
+function msg(t){$('dm').textContent=t}
+$('auth').onclick=function(){
+  if(user){user=null;applyLang();return}
+  $('s1').hidden=false;$('s2').hidden=true;msg('');if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','')
+};
+$('close').onclick=function(){dlg.close?dlg.close():dlg.removeAttribute('open')};
+$('sendOtp').onclick=function(){
+  var p=$('ph').value.trim();
+  if(!/^01[3-9]\d{8}$/.test(p)){msg(L==='bn'?'সঠিক ১১ সংখ্যার মোবাইল নম্বর দিন।':'Enter a valid 11-digit mobile number.');return}
+  otpCode=String(Math.floor(100000+Math.random()*900000));
+  $('s1').hidden=true;$('s2').hidden=false;
+  msg((L==='bn'?'ডেমো ওটিপি: ':'Demo OTP: ')+otpCode+(L==='bn'?' (আসল সাইটে এসএমএসে যাবে)':' (a real site sends this by SMS)'));
+};
+$('verify').onclick=function(){
+  if($('otp').value.trim()!==otpCode){msg(L==='bn'?'ওটিপি মেলেনি। আবার চেষ্টা করুন।':'OTP does not match. Try again.');return}
+  user=$('ph').value;$('close').click();applyLang();
+};
+$('confirm').onclick=function(){
+  if(!user){$('auth').click();return}
+  alert(L==='bn'?'রাইড অনুরোধ পাঠানো হয়েছে। ভাড়া: '+$('fare').textContent:'Ride request sent. Fare: '+$('fare').textContent);
+};
+/* install */
+addEventListener('beforeinstallprompt',function(e){e.preventDefault();deferred=e});
+$('install').onclick=function(e){e.preventDefault();if(deferred){deferred.prompt()}else alert(L==='bn'?'ব্রাউজারের মেনু থেকে “হোম স্ক্রিনে যোগ করুন” বেছে নিন।':'Use your browser menu and choose “Add to Home screen”.')};
+$('lang').onclick=function(){L=L==='bn'?'en':'bn';applyLang()};
+applyLang();auto();
+</script>
+</body>
+</html>
